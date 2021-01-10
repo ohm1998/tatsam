@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tatsam/Online/OnlineBlock.dart';
@@ -25,8 +27,13 @@ class _OnlinePageState extends State<OnlinePage> {
 
   GetData() async {
     final prefs = await _prefs;
-    var countries = prefs.get("favCountries");
-    print(countries);
+    List<String> countries = prefs.getStringList("favCountries");
+    for (var c in countries) {
+      print(c);
+      var temp = json.decode(c);
+      onlineBlock.makeCountryFav
+          .add(Country(temp["id"], temp["code"], temp["name"], temp["region"]));
+    }
   }
 
   dispose() {

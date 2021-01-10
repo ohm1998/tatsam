@@ -20,17 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0fd2085-1cb2-45ef-80e4-870cbcdbf7a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/Country.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/HomePage.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Offline/OfflineView.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Online/OnlineBlock.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Online/OnlineView.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Online/OnlineBlock.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Online/OnlineBlock.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Online/OnlineView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Online/OnlineView.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

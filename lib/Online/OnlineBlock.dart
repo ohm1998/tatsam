@@ -53,12 +53,14 @@ class OnlineBlock {
   }
 
   dispose() async {
-    var favCountries = [];
+    List<String> favCountries = [];
     for (Country c in _countryList) {
-      favCountries.add({c.code: c.getData()});
+      if (c.fav) {
+        favCountries.add(json.encode(c.getData()));
+      }
     }
     var prefs = await SharedPreferences.getInstance();
-    prefs.setString("favCountries", json.encode(favCountries));
+    prefs.setStringList("favCountries", favCountries);
     _countryAddFavStreamController.close();
     _countryListStreamController.close();
     _countryRemoveFavStreamController.close();
