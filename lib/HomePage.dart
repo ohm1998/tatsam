@@ -13,7 +13,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _curr_page = 0;
   var widget_list = [OnlinePage(), OfflinePage()];
   void _setIndex(index) {
-    print(index);
+    //print(index);
     setState(() {
       _curr_page = index;
     });
@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.online_prediction), title: Text("Online")),
             BottomNavigationBarItem(
-                icon: Icon(Icons.offline_bolt), title: Text("Offline"))
+                icon: Icon(Icons.offline_bolt), title: Text("Favourites"))
           ],
           onTap: _setIndex,
           showSelectedLabels: true,

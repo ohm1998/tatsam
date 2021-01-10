@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tatsam/Online/OnlineBlock.dart';
 
 import '../Country.dart';
@@ -17,24 +14,7 @@ class OnlinePage extends StatefulWidget {
 
 class _OnlinePageState extends State<OnlinePage> {
   final onlineBlock = new OnlineBlock();
-  var _prefs = SharedPreferences.getInstance();
   var favCountries = [];
-  @override
-  void initState() {
-    print("Init Online");
-    GetData();
-  }
-
-  GetData() async {
-    final prefs = await _prefs;
-    List<String> countries = prefs.getStringList("favCountries");
-    for (var c in countries) {
-      print(c);
-      var temp = json.decode(c);
-      onlineBlock.makeCountryFav
-          .add(Country(temp["id"], temp["code"], temp["name"], temp["region"]));
-    }
-  }
 
   dispose() {
     onlineBlock.dispose();
@@ -53,7 +33,11 @@ class _OnlinePageState extends State<OnlinePage> {
             builder:
                 (BuildContext context, AsyncSnapshot<List<Country>> snapshot) {
               if (snapshot.hasError) {
-                return Text("Check Internet Connection");
+                return Center(
+                    child: Text(
+                  "Check Internet Connection",
+                  style: TextStyle(fontSize: 30),
+                ));
               }
               if (snapshot.hasData) {
                 return ListView.builder(
@@ -84,14 +68,17 @@ class _OnlinePageState extends State<OnlinePage> {
                                     Icons.star_border,
                                     size: 30,
                                   )),
-                        title: Text(snapshot.data[index].code +
-                            " " +
-                            snapshot.data[index].name),
+                        title: Text(snapshot.data[index].name +
+                            " (" +
+                            snapshot.data[index].code +
+                            ")"),
                         subtitle: Text(snapshot.data[index].region),
                       ));
                     });
               }
-              return Text("Loading");
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             },
           ),
         ));

@@ -22,7 +22,7 @@ class OnlineBlock {
 
   StreamSink<Country> get RemCountryFromFav =>
       _countryRemoveFavStreamController.sink;
-
+  final _prefs = SharedPreferences.getInstance();
   OnlineBlock() {
     Dio http = Dio();
     http.get("https://api.first.org/data/v1/countries").then((res) {
@@ -38,21 +38,21 @@ class OnlineBlock {
       _countryListStreamController.add(countries);
       _countryAddFavStreamController.stream.listen(_AddCountryToFav);
       _countryRemoveFavStreamController.stream.listen(_RemoveCountryFromFav);
+      GetData();
     });
   }
-  void _AddCountryToFav(Country c) {
-    //print(c.id);
-    //print(_countryList);
-    _countryList[c.id].fav = true;
-    countryListSink.add(_countryList);
+  GetData() async {
+    final prefs = await _prefs;
+    List<String> countries = prefs.getStringList("favCountries");
+    for (var c in countries) {
+      //print(c);
+      var temp = json.decode(c);
+      makeCountryFav
+          .add(Country(temp["id"], temp["code"], temp["name"], temp["region"]));
+    }
   }
 
-  void _RemoveCountryFromFav(Country c) {
-    _countryList[c.id].fav = false;
-    countryListSink.add(_countryList);
-  }
-
-  dispose() async {
+  _UpdatePreferences() async {
     List<String> favCountries = [];
     for (Country c in _countryList) {
       if (c.fav) {
@@ -60,7 +60,25 @@ class OnlineBlock {
       }
     }
     var prefs = await SharedPreferences.getInstance();
+    //print(favCountries);
     prefs.setStringList("favCountries", favCountries);
+  }
+
+  void _AddCountryToFav(Country c) {
+    //print(c.id);
+    //print(_countryList);
+    _countryList[c.id].fav = true;
+    countryListSink.add(_countryList);
+    _UpdatePreferences();
+  }
+
+  void _RemoveCountryFromFav(Country c) {
+    _countryList[c.id].fav = false;
+    countryListSink.add(_countryList);
+    _UpdatePreferences();
+  }
+
+  dispose() async {
     _countryAddFavStreamController.close();
     _countryListStreamController.close();
     _countryRemoveFavStreamController.close();
