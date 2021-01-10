@@ -1,6 +1,8 @@
 # tatsam
 
-A new Flutter project.
+Link to video Demo : https://drive.google.com/file/d/1jZmS381AhClBALyJqvwHsv5mdXDdPanh/view?usp=sharing
+
+Flutter shared_preferences, dio and connectivity plugins are used. 
 
 ## Getting Started
 
